@@ -1,9 +1,9 @@
 ﻿# Dog pain detection algorihtm
 
-This is a video-based dog's pain behavior recognition algorithm .We implement a hierarchical method that can localize the position of the dog within the image frames, extract the pose information, treat missing data problems and normalize the keypoint coordinates. A two-stream ConvLSTM and LSTM model is applied to detect dogs' pain action from the RGB video frames and corresponding keypoints sequence. This repository includes implementations of the following methods:
-* Two-stream (RGB+keypoints) model for dog pain behavior recognition
-* Auxiliary learning to boost model's generalization ability
-* Three fusion methods: late fusion, concatenation, bilinear fusion.   
+This is a video-based dog's pain behavior recognition algorithm. This project is based on https://github.com/s04240051/pain_detection
+The thesis can be found at https://studenttheses.uu.nl/handle/20.500.12932/47308
+We implement a hierarchical method that can localize the position of the dog within the image frames, extract the pose information, treat missing data problems and normalize the keypoint coordinates. 
+A three-stream ConvLSTM, LSTM and random forest/linear layer model is applied to detect dogs' pain action from the RGB video frames and corresponding keypoints sequence and adds a one-hot encoded vector with correspondings behaviors in a particular frame.
 
 <div align=center><img src=pipeline.png width="300" height="300" alt="pipeline"/></div>  
 
@@ -18,12 +18,11 @@ This is a video-based dog's pain behavior recognition algorithm .We implement a 
 * ConvLSTM is used to extract spatial information from the RGB video frame. Input data of the ConvLSTM is a video clip consist of a stack of RGN frames. The input shape is (N, 112, 112,3), N is length of video clip
 ### LSTM 
 * LSTM with attention mechenism is applied to process the keypoints graph. Input data of the LSTM is a stack of keypoints 2-D coordinates. The input shape is (N, 2X17), N is length of video clip, is the number of keypoints.
+### Linear layer and Random Forest classifier
+* Processes the behaviors extracted from MSQNet. Subsequently aids in the explainability of the model in a diverse set of methods.
 ## Training & testing
 ### Training on Dog-pain dataset
 All code details can be found in [./tool/train.py](tool/train.py). See all the configs file in ./configs
-* Videos frames are sampled in 2FPS. We select the video clips with two frames overlapping. The model would ouptut the confident score of a video clip contain the dog in pain state. Both stream apply the same data augmentation technique such as horizontal flipping, random rotation and shift.  
-
-* Auxiliary learning would train a extra classifier head alongside the primary task (confidence score of pain) to classify the video clip into contains the dog has "orthopedic pain," "neurological pain", or "not in pain" state.   
 ```
 python test.py --cfg configs/two_stream.yaml \
 KEYPOINT_FILE path to_your_keypoint_file \

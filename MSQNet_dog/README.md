@@ -1,5 +1,7 @@
 # MSQNet
 Official implementation of "Actor-agnostic Multi-label Action Recognition with Multi-modal Query", accepted at ICCV Workshops 2023.
+This version is altered for my master thesis about behavior and pain estimation in dogs with computer vision. Timesformerclipinitvideoguide.py was used for my thesis.
+
 ## Authors
 [Anindya Mondal*](https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en), [Sauradip Nag*](https://sauradip.github.io/), [Joaquin M Prada](https://www.surrey.ac.uk/people/joaquin-m-prada), [Xiatian Zhu](https://surrey-uplab.github.io/), [Anjan Dutta*](https://sites.google.com/site/2adutta/).
 
