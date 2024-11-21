@@ -1,7 +1,7 @@
 ﻿# Dog pain detection algorihtm
 
-This is a video-based dog's pain behavior recognition algorithm. This project is based on https://github.com/s04240051/pain_detection
-The thesis can be found at https://studenttheses.uu.nl/handle/20.500.12932/47308
+This is a video-based dog's pain behavior recognition algorithm. This project is based on https://github.com/s04240051/pain_detection .
+The thesis can be found at https://studenttheses.uu.nl/handle/20.500.12932/47308 .
 We implement a hierarchical method that can localize the position of the dog within the image frames, extract the pose information, treat missing data problems and normalize the keypoint coordinates. 
 A three-stream ConvLSTM, LSTM and random forest/linear layer model is applied to detect dogs' pain action from the RGB video frames and corresponding keypoints sequence and adds a one-hot encoded vector with correspondings behaviors in a particular frame.
 
